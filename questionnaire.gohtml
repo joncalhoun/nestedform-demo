@@ -1,0 +1,19 @@
+<html>
+<body>
+<form action="/responses" method="post" >
+  <!-- TODO: Add a CSRF Token. Excluded for simplictiy in the demo -->
+  <input type="hidden" name="questionnaire_id" value="{{.ID}}">
+  {{ range .Questions }}
+    <div>
+      <!-- for should match the id of the input it is for. I made it unique here from the input name to show the difference -->
+      <label for="question-{{.ID}}" class="form-label">
+        {{ .Question }}
+      </label>
+      <input type="text" id="question-{{.ID}}" name="questions[{{.ID}}]" required>
+    </div>
+  {{ end }}
+    <hr>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
